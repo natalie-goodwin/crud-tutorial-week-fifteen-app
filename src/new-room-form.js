@@ -9,7 +9,7 @@ export default class NewRoomForm extends React.Component {
             areaValue: ""
         } /*these will be the values on 
         the new room; there will be an input
-        film mapped to our name and area values
+        field mapped to our name and area values
         in the new room form state */
         
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -25,7 +25,8 @@ export default class NewRoomForm extends React.Component {
         handleAreaChange(e) {
             this.setState({areaValue: e.target.value});
         }
-        handleClick(e) {
+        handleClick(e) {/*calling addNewRoom method that was passed in on 
+        props and passing in the event, the data of this house, amd the new room */
             this.props.addNewRoom(e, this.props.data,
             {name: this.state.nameValue, area: this.state.areaValue});
             this.setState({nameValue: "", areaValue: ""});
@@ -37,13 +38,17 @@ export default class NewRoomForm extends React.Component {
         render(){
             return (
                 <div>
-                    <input type="text" placeholder="Name" onChange={this.handleNameChange} value={this.state.nameValue}></input>
-                    <input type="text" placeholder="Area" onChange={this.handleAreaChange} value={this.state.areaValue}></input>
+                    <input type="text" placeholder="Name" onChange={this.handleNameChange} value={this.state.nameValue}/>
+                    <input type="text" placeholder="Area" onChange={this.handleAreaChange} value={this.state.areaValue}/>
                     <button onClick={this.handleClick}>Add Room</button>
                 </div> /*on click, will handle the event and it will have
                 the data based on that event */
             ) /*anytime the name changes, it will update the name value that the
             handleNameChange method tells it to do */ 
-        }
+        } /*we are tying the value in the input the user sees 
+        to the variable in the new room state */
     }
     
+
+    /*"This" refers to whatever the house or room is that is being passed or called 
+    in the current state */
